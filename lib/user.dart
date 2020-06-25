@@ -1,10 +1,12 @@
 class User {
-  String name, email, phone, password, credit, datereg,quantity;
+  String username, email, password, phonenumber,credit, datereg,quantity;
 
   User(
-      {this.name,
+      {this.username,
       this.email,
       this.password,
-      this.phone,
+      this.phonenumber,
+      this.credit,
+      this.datereg,this.quantity
       });
 }
