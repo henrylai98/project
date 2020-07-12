@@ -108,7 +108,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     child: Container(
                                       alignment: Alignment.centerLeft,
                                       height: 20,
-                                      child: Text(widget.user.username,
+                                      child: Text(widget.user.name,
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontSize: 14,
@@ -152,7 +152,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     child: Container(
                                       alignment: Alignment.centerLeft,
                                       height: 20,
-                                      child: Text(widget.user.phonenumber,
+                                      child: Text(widget.user.phone,
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontSize: 14,
@@ -202,9 +202,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               "Store Credit",
                               style: TextStyle(color: Colors.white),
                             ),
-                            Text(widget.user.credit,
-                                style: TextStyle(
-                                    color: Color.fromRGBO(101, 255, 218, 50)))
+                            
+
                           ],
                         )
                       ],
@@ -382,7 +381,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         print('in success');
 
         setState(() {
-          widget.user.username = rc.titleCase;
+          widget.user.name = rc.titleCase;
         });
         Toast.show("Success", context,
             duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
@@ -563,7 +562,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         print('in success');
 
         setState(() {
-          widget.user.phonenumber = phone;
+          widget.user.phone = phone;
         });
         Toast.show("Success", context,
             duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
@@ -578,7 +577,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
    void _gotologinPage() {
     // flutter defined function
-    print(widget.user.username);
+    print(widget.user.name);
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -634,7 +633,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   void _registerAccount() {
     // flutter defined function
-    print(widget.user.username);
+    print(widget.user.name);
     showDialog(
       context: context,
       builder: (BuildContext context) {

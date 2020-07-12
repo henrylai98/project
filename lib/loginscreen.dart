@@ -166,10 +166,10 @@ class _LoginPageState extends State<LoginPage> {
         List userdata = string.split(",");
         if (userdata[0] == "success") {
           User _user = new User(
-            username: userdata[1],
+            name: userdata[1],
             email: _email,
             password: _password,
-            phonenumber: userdata[3],
+            phone: userdata[3],
           );
           pr.hide();
           Navigator.push(

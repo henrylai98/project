@@ -626,7 +626,7 @@ class _AdminProductState extends State<AdminProduct> {
       setState(() {
         var extractdata = json.decode(res.body);
         productdata = extractdata["products"];
-        cartquantity = widget.user.quantity;
+        
       });
     }).catchError((err) {
       print(err);

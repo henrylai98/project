@@ -31,9 +31,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     'http://slumberjer.com/grocery/php/payment.php?email=' +
                         widget.user.email +
                         '&mobile=' +
-                        widget.user.phonenumber +
+                        widget.user.phone +
                         '&name=' +
-                        widget.user.username +
+                        widget.user.name +
                         '&amount=' +
                         widget.val +
                         '&orderid=' +

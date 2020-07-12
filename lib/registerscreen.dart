@@ -13,7 +13,7 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   double screenHeight;
   bool _isChecked = false;
-  String urlRegister = "https://yhkywy.com/comfortzone/php/register_user.php";
+  String urlRegister = "http://yhkywy.com/comfortzone/php/registeruser.php";
   TextEditingController _nameEditingController = new TextEditingController();
   TextEditingController _emailEditingController = new TextEditingController();
   TextEditingController _passEditingController = new TextEditingController();
@@ -28,6 +28,7 @@ class _SignupPageState extends State<SignupPage> {
           children: <Widget>[
             upperHalf(context),
             lowerHalf(context),
+            pageTitle(),
           ],
         ));
   }
@@ -43,63 +44,65 @@ class _SignupPageState extends State<SignupPage> {
 
   Widget lowerHalf(BuildContext context) {
     return Container(
+      height: 400,
       margin: EdgeInsets.only(top: screenHeight / 3.5),
       padding: EdgeInsets.only(left: 10, right: 10),
       child: Column(
         children: <Widget>[
           Card(
-              elevation: 10,
-              color: Colors.white,
-              child: Container(
-                  padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Align(
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            "Signup",
-                            style: TextStyle(
-                              color: Colors.brown,
-                              fontSize: 30,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                        TextFormField(
-                          controller: _nameEditingController,
-                          keyboardType: TextInputType.text,
-                          decoration: InputDecoration(
-                            labelText: "Enter Username",
-                            icon: Icon(Icons.person),
-                          ),
-                        ),
-                        TextFormField(
-                          controller: _emailEditingController,
-                          keyboardType: TextInputType.emailAddress,
-                          decoration: InputDecoration(
-                            labelText: "Enter Email",
-                            icon: Icon(Icons.email),
-                          ),
-                        ),
-                        TextFormField(
-                          controller: _passEditingController,
-                          keyboardType: TextInputType.text,
-                          decoration: InputDecoration(
-                            labelText: "Enter Password",
-                            icon: Icon(Icons.lock),
-                          ),
-                          obscureText: true,
-                        ),
-                        TextFormField(
-                          controller: _phoneEditingController,
-                          keyboardType: TextInputType.text,
-                          decoration: InputDecoration(
-                            labelText: "Enter Phone Number",
-                            icon: Icon(Icons.phone),
-                          ),
-                        ),
-                        SizedBox(
+            elevation: 10,
+            child: Container(
+              padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+              child: Column(
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      "Register",
+                      style: TextStyle(
+                        color: Colors.brown,
+                        fontSize: 26,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                  TextField(
+                    style: TextStyle(color: Colors.brown,),
+                      controller: _nameEditingController,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        labelText: 'Name',
+                        icon: Icon(Icons.person),
+                      )),
+                  TextField(
+                    style: TextStyle(color: Colors.brown,),
+
+                      controller: _emailEditingController,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        labelText: 'Email',
+                        icon: Icon(Icons.email),
+                      )),
+                  TextField(
+                    style: TextStyle(color: Colors.brown,),
+
+                      controller: _phoneEditingController,
+                      keyboardType: TextInputType.phone,
+                      decoration: InputDecoration(
+                        labelText: 'Phone',
+                        icon: Icon(Icons.phone),
+                      )),
+                  TextField(
+                    style: TextStyle(color: Colors.brown,),
+
+                    controller: _passEditingController,
+                    decoration: InputDecoration(
+                      labelText: 'Password',
+                      icon: Icon(Icons.lock),
+                    ),
+                    obscureText: true,
+                  ),
+                  SizedBox(
                     height: 5,
                   ),
                   Row(
@@ -115,7 +118,7 @@ class _SignupPageState extends State<SignupPage> {
                         onTap: _showEULA,
                         child: Text('I Agree to Terms  ',
                             style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.bold,color: Colors.brown)),
+                                fontSize: 16, fontWeight: FontWeight.bold,color: Colors.white)),
                       ),
                       MaterialButton(
                         shape: RoundedRectangleBorder(
@@ -140,38 +143,62 @@ class _SignupPageState extends State<SignupPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text("Already register? ", style: TextStyle(fontSize: 16.0,color: Colors.brown)),
+              Text("Already register? ", style: TextStyle(fontSize: 16.0,color: Colors.white)),
               GestureDetector(
                 onTap: _loginScreen,
                 child: Text(
                   "Login",
-                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold,color: Colors.brown),
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold,color: Colors.white),
                 ),
               ),
             ],
           )
-           ],
+        ],
       ),
     );
-  }           
+  }
+
+  Widget pageTitle() {
+    return Container(
+      //color: Color.fromRGBO(255, 200, 200, 200),
+      margin: EdgeInsets.only(top: 60),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Icon(
+            Icons.shopping_basket,
+            size: 40,
+            color: Colors.white,
+          ),
+          Text(
+            " MY.GROCERY",
+            style: TextStyle(
+                fontSize: 36, color: Colors.brown, fontWeight: FontWeight.w900),
+          )
+        ],
+      ),
+    );
+  } 
           
 
   void _onRegister() {
-    String username = _nameEditingController.text;
+    String name = _nameEditingController.text;
     String email = _emailEditingController.text;
     String password = _passEditingController.text;
-    String phonenumber = _phoneEditingController.text;
+    String phone = _phoneEditingController.text;
+    
     if (!_isChecked) {
       Toast.show("Please Accept Term", context,
           duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
       return;
     }
-    
+
     http.post(urlRegister, body: {
-      "username": username,
+      "username": name,
       "email": email,
       "password": password,
-      "phonenumber": phonenumber,
+      "phonenumber": phone,
     }).then((res) {
       if (res.body == "success") {
         Navigator.pop(
@@ -180,12 +207,14 @@ class _SignupPageState extends State<SignupPage> {
         Toast.show("Register success", context,
             duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
       } else {
-        Toast.show("Register fail", context,
+        Toast.show("Register failed", context,
             duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
       }
     }).catchError((err) {
       print(err);
-    });
+      }
+
+   );
   }
 
   void _loginScreen() {
